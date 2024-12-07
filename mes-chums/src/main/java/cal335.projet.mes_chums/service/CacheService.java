@@ -1,6 +1,5 @@
 package cal335.projet.mes_chums.service;
 
-
 import cal335.projet.mes_chums.dao.CoordonneesDAO;
 import cal335.projet.mes_chums.modele.Contact;
 import cal335.projet.mes_chums.modele.Coordonnees;
@@ -8,10 +7,14 @@ import cal335.projet.mes_chums.modele.Coordonnees;
 import java.util.*;
 
 public class CacheService {
-    private Map<Contact, List<Coordonnees>> contactsFavoris = new HashMap<>();
+    private final Map<Contact, List<Coordonnees>> contactsFavoris = new HashMap<>();
+    private final CoordonneesDAO coordonneesDAO;
+
+    public CacheService(CoordonneesDAO coordonneesDAO) {
+        this.coordonneesDAO = coordonneesDAO;
+    }
 
     public void initialiserCache(List<Contact> favoris) {
-        CoordonneesDAO coordonneesDAO = new CoordonneesDAO();
         for (Contact contact : favoris) {
             List<Coordonnees> coordonneesList = coordonneesDAO.obtenirCoordonneesParContact(contact.getId_contact());
             contactsFavoris.put(contact, coordonneesList);

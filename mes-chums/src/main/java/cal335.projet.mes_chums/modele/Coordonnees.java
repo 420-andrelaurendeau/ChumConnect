@@ -33,4 +33,14 @@ public class Coordonnees {
         this.id_coordonnees = id_coordonnees;
     }
 
+    public Integer getId_coordonnees() {
+        return id_coordonnees;
+    }
+
+    public String toString() {
+        return "Coordonnees{" +
+                "latitude=" + latitude +
+                ", longitude=" + longitude +
+                '}';
+    }
 }

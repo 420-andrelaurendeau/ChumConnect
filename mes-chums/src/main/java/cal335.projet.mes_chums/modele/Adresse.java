@@ -10,6 +10,9 @@ public class Adresse {
     private String pays;
     private Coordonnees coordonnees;
 
+    public Adresse() {
+    }
+
     public Adresse(Integer id_adresse, String rue, String ville, String codePostal, String pays, Coordonnees coordonnees) {
         this.id_adresse = id_adresse;
         this.rue = rue;
@@ -43,5 +46,39 @@ public class Adresse {
         return coordonnees;
     }
 
+    public void setId_adresse(Integer id_adresse) {
+        this.id_adresse = id_adresse;
+    }
 
+    public void setRue(String rue) {
+        this.rue = rue;
+    }
+
+    public void setVille(String ville) {
+        this.ville = ville;
+    }
+
+    public void setCodePostal(String codePostal) {
+        this.codePostal = codePostal;
+    }
+
+    public void setPays(String pays) {
+        this.pays = pays;
+    }
+
+    public void setCoordonnees(Coordonnees coordonnees) {
+        this.coordonnees = coordonnees;
+    }
+
+
+    public String toString() {
+        return "Adresse{" +
+                "id_adresse=" + id_adresse +
+                ", rue='" + rue + '\'' +
+                ", ville='" + ville + '\'' +
+                ", codePostal='" + codePostal + '\'' +
+                ", pays='" + pays + '\'' +
+                ", coordonnees=" + coordonnees +
+                '}';
+    }
 }

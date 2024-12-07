@@ -9,7 +9,7 @@ public class CalculateurDistance {
         double lonDistance = Math.toRadians(adresse2.getLongitude() - adresse1.getLongitude());
 
         double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2) +
-                Math.cos(Math.toRadians(adresse1.getLatitude())) * Math.cos(Math.toRadians(adresse2.getLatitude())) /
+                Math.cos(Math.toRadians(adresse1.getLatitude())) * Math.cos(Math.toRadians(adresse2.getLatitude())) *
                         Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
 
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));

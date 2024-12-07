@@ -1,64 +1,73 @@
 package cal335.projet.mes_chums.modele;
 
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class Contact {
     private Integer id_contact;
     private String nom;
     private String prenom;
-    private boolean isFavoris;
+    private boolean favoris;
     private List<Adresse> adresses;
 
     public Contact() {
+        this.adresses = new ArrayList<>();
     }
 
-    public Contact(String nom, String prenom, boolean isFavoris) {
-        this.id_contact = id_contact;
+    public Contact(String nom, String prenom, boolean favoris) {
         this.nom = nom;
         this.prenom = prenom;
-        this.isFavoris = isFavoris;
-        this.adresses = adresses;
+        this.favoris = favoris;
+        this.adresses = new ArrayList<>();
     }
 
+    // Getters et Setters
     public Integer getId_contact() {
         return id_contact;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public boolean isFavoris() {
-        return isFavoris;
-    }
-
-    public List<Adresse> getAdresses() {
-        return adresses;
     }
 
     public void setId_contact(Integer id_contact) {
         this.id_contact = id_contact;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
     }
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
 
-    public void setFavoris(boolean isFavoris) {
-        this.isFavoris = isFavoris;
+    public boolean isFavoris() {
+        return favoris;
+    }
+
+    public void setFavoris(boolean favoris) {
+        this.favoris = favoris;
+    }
+
+    public List<Adresse> getAdresses() {
+        return adresses;
     }
 
     public void setAdresses(List<Adresse> adresses) {
         this.adresses = adresses;
+    }
+
+    public List<Coordonnees> getAdressesCoordonnees() {
+        List<Coordonnees> coords = new ArrayList<>();
+        for (Adresse adresse : adresses) {
+            coords.add(adresse.getCoordonnees());
+        }
+        return coords;
     }
 
     @Override
@@ -76,4 +85,3 @@ public class Contact {
         return id_contact != null ? id_contact.hashCode() : 0;
     }
 }
-

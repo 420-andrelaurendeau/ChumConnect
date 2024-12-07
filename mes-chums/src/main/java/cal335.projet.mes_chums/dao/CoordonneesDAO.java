@@ -10,13 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CoordonneesDAO {
+    private final ContactDAO contactDAO;
+
+    public CoordonneesDAO(ContactDAO contactDAO) {
+        this.contactDAO = contactDAO;
+    }
+
     public List<Coordonnees> obtenirCoordonneesParContact(Integer contactId) {
         List<Coordonnees> coordonneesList = new ArrayList<>();
         String sql = "SELECT c.id_coordonnees, c.latitude, c.longitude FROM Coordonnees c " +
                 "JOIN Adresse a ON c.id_coordonnees = a.id_coordonnees " +
                 "JOIN ContactAdresse ca ON a.id_adresse = ca.id_adresse " +
                 "WHERE ca.id_contact = ?";
-        try (Connection conn = ContactDAO.obtenirConnexion();
+        try (Connection conn = contactDAO.obtenirConnexion();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, contactId);
             try (ResultSet rs = pstmt.executeQuery()) {
@@ -34,4 +40,3 @@ public class CoordonneesDAO {
         return coordonneesList;
     }
 }
-
