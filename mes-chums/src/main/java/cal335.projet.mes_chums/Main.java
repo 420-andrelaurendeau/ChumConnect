@@ -56,8 +56,7 @@ public class Main {
             System.err.println("Erreur lors de l'initialisation du cache : " + e.getMessage());
         }
 
-        List<Adresse> adresses = contactDAO.loadAdressesForContact(6);
-        System.out.println("Adresses pour le contact 1 : " + adresses);
+
         // Démarrer le serveur HTTP
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
         server.createContext("/contacts", new ContactControleur(contactService));
